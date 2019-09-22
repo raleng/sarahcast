@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
-import ForecastCard from "./components/ForecastCard";
+import Forecast from "./components/Forecast";
 
 ReactDOM.render(<App />, document.getElementById("root"));
 
