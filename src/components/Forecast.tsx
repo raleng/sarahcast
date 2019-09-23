@@ -15,9 +15,7 @@ class Forecast extends Component<{ data: Array<STData> }> {
       return
     }
     
-    return <div><h1>Forecast</h1>
-    <div>{cards}</div>
-    </div>;
+    return <div>{cards}</div>;
   }
 }
 
