@@ -1,0 +1,7 @@
+{
+    "build": {
+  "env": {
+    "REACT_APP_TIDE_SUNRISE_API_KEY": "@apikey"
+  }
+}
+}
