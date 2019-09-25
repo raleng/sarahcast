@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { STData } from "../STData";
 import { TouchableHighlightBase } from "react-native";
 
-class Forecast extends Component<{ data: STData }> { 
+export default class Forecast extends Component<{ data: STData }> { 
     render () {
         if (this.props.data) {
             return <div className="box"><h1 className="title">{this.props.data.date}</h1>
@@ -26,6 +26,3 @@ class Forecast extends Component<{ data: STData }> {
         }
     }
 }
-
-
-export default Forecast;
