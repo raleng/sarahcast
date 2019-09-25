@@ -12,7 +12,7 @@ class App extends Component {
     dates: Array<STData>()
   };
 
-  componentDidMount() {   
+  componentDidMount() {
     let headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa('sarahcast' + ':' + API_KEY));
 
@@ -24,14 +24,14 @@ class App extends Component {
         for (let [key, value] of Object.entries(data)) {
           counter++
           if (counter < 8) {
-      
-          let d = new STData(value);
-          d.date = key;
-          dataArray.push(d)
+
+            let d = new STData(value);
+            d.date = key;
+            dataArray.push(d)
           }
         }
-        this.setState( { dates: dataArray })
-    
+        this.setState({ dates: dataArray })
+
       })
       .catch(console.log);
   }
@@ -41,7 +41,7 @@ class App extends Component {
       <section className="section">
         <div className="container">
           <h1 className="title">Sarahcast</h1>
-          <div><Forecast data={this.state.dates}/></div>
+          <div><Forecast data={this.state.dates} /></div>
         </div>
       </section>
     );
@@ -50,3 +50,44 @@ class App extends Component {
 
 
 export default App;
+
+/*
+ * FROM JULIAN
+ *
+ * {
+ *  "test": {
+ *      "a": 2,
+ *      "b": {
+ *         "c":3
+ *      }
+ *  }
+ * }
+ *
+ *
+
+
+interface innerInner {
+  c: Number;
+}
+
+interface inner {
+  a: Number;
+  b: [innerInner];
+}
+
+interface json {
+  [key: string]: inner;
+}
+
+const obj: json = {
+  a: {
+    a: 2,
+    b: [{ c: 3 }]
+  }
+};
+
+Object.entries(obj).map(([_, val]) => {
+  val.b[0].c;
+});
+
+*/
