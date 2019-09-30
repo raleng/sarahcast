@@ -1,4 +1,4 @@
-export class STData {
+export class SunriseTidesData {
   date: string = "";
   sunrise: string = "";
   tides_low?: Array<string>;

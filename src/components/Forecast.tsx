@@ -1,22 +1,21 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-import { STData } from "../STData";
+import ApiJson, { HighLow, SunriseTides } from "../ApiJson";
 import ForecastCard from "./ForecastCard";
-import { jsxElement } from "@babel/types";
 
-class Forecast extends Component<{ data: Array<STData> }> { 
-
+export default class Forecast extends Component<{ data: ApiJson }> {
   render() {
+    let cards = [];
     if (this.props.data) {
-      var cards = this.props.data.map(function(d) {
-        return <ForecastCard data={d}/>
-      })
-    } else {
-      return
+      let dates = Object.entries(this.props.data);
+
+      for (let key in dates) {
+        //console.log(`1 : ${dates[0]}`);
+
+        cards.push(<ForecastCard date={dates[key][0]} data={dates[key][1]} />);
+        console.log(dates[key][0], dates[key][1]);
+      }
     }
-    
     return <div>{cards}</div>;
   }
 }
-
-export default Forecast;
