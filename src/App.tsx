@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Forecast from "./components/Forecast";
 import ApiJson from "./ApiJson";
+import { Button } from "react-native";
 
 const API_KEY = process.env.REACT_APP_TIDE_SUNRISE_API_KEY;
 const API_URL = "https://raleng.pythonanywhere.com/sunrise-tide-api/v1.0";
@@ -40,12 +41,20 @@ class App extends Component {
 
   render() {
     return (
-      <section className="section">
-        <div className="container">
-          <h1 className="title">Sarahcast</h1>
-          <div>{this.forecastCards()}</div>
-        </div>
-      </section>
+      <div>
+        <section className="hero">
+          <div className="hero-body">
+            <h1 className="title">
+              Sarahcast
+          </h1>
+          </div>
+        </section>
+        <section className="section">
+          <div className="container">
+            {this.forecastCards()}
+          </div>
+        </section>
+      </div>
     );
   }
 }
