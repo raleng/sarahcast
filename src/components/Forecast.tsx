@@ -10,8 +10,6 @@ export default class Forecast extends Component<{ data: ApiJson }> {
       let dates = Object.entries(this.props.data);
 
       for (let key in dates) {
-        //console.log(`1 : ${dates[0]}`);
-
         cards.push(<ForecastCard date={dates[key][0]} data={dates[key][1]} />);
         console.log(dates[key][0], dates[key][1]);
       }

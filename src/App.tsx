@@ -42,17 +42,18 @@ class App extends Component {
   render() {
     return (
       <div>
-        <section className="hero">
-          <div className="hero-body">
-            <h1 className="title">
-              Sarahcast
-          </h1>
-          </div>
-        </section>
         <section className="section">
-          <div className="container">
-            {this.forecastCards()}
-          </div>
+          <nav className="level">
+            <div className="level-left">
+              <div className="level-item">
+                <h1 className="title">Sarahcast</h1>
+                <a className="button is-primary" onClick={this.getForecast}>
+                  <i className="fa fa-refresh" />
+                </a>
+              </div>
+            </div>
+          </nav>
+          <div className="container">{this.forecastCards()}</div>
         </section>
       </div>
     );
@@ -60,44 +61,3 @@ class App extends Component {
 }
 
 export default App;
-
-/*
- * FROM JULIAN
- *
- * {
- *  "test": {
- *      "a": 2,
- *      "b": {
- *         "c":3
- *      }
- *  }
- * }
- *
- *
-
-
-interface innerInner {
-  c: Number;
-}
-
-interface inner {
-  a: Number;
-  b: [innerInner];
-}
-
-interface json {
-  [key: string]: inner;
-}
-
-const obj: json = {
-  a: {
-    a: 2,
-    b: [{ c: 3 }]
-  }
-};
-
-Object.entries(obj).map(([_, val]) => {
-  val.b[0].c;
-});
-
-*/

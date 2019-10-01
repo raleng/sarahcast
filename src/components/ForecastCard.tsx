@@ -10,7 +10,6 @@ export default class ForecastCard extends Component<{
     let date = new Date(dateString);
     let utc = date.getUTCDate();
 
-    let year = date.getFullYear();
     let month = date.getMonth();
     let day = date.getDay();
 
@@ -23,14 +22,14 @@ export default class ForecastCard extends Component<{
     dayMap.set(6, "Saturday");
     dayMap.set(0, "Sunday");
 
-    return `${dayMap.get(day)}, ${utc}.${month}.${year}`;
+    return `${dayMap.get(day)}, ${utc}.${month}.`;
   };
 
   sunrise = (sunrise: string) => {
     return (
-      <div className="tags has-addons">
-        <span className="tag is-dark">Sunrise</span>
-        <span className="tag is-light">{sunrise}</span>
+      <div>
+        <i className="fa fa-sun-o" />
+        <span className="content">{sunrise}</span>
       </div>
     );
   };
@@ -66,13 +65,57 @@ export default class ForecastCard extends Component<{
     );
   };
 
+  getSunriseTide = (sunrise: string, tides?: HighLow) => {
+    let res = sunrise.split(":");
+    let sunriseHour = Number(res[0]);
+
+    if (tides) {
+      let firstLowTide = tides.low[0];
+      let firstHighTide = tides.high[0];
+      let lowHour = Number(firstLowTide.split(":")[0]);
+      let highHour = Number(firstHighTide.split(":")[0]);
+
+      if (Math.abs(lowHour - 6) >= Math.abs(highHour - 6)) {
+        return (
+          <div>
+            <i className="fa fa-arrow-up" />
+            <span className="content">{firstHighTide}</span>
+          </div>
+        );
+      } else {
+        return (
+          <div>
+            <i className="fa fa-arrow-down" />
+            <span className="content">{firstLowTide}</span>
+          </div>
+        );
+      }
+    }
+  };
+
   render() {
     if (this.props.data) {
       return (
-        <div className="box">
-          <h2 className="title">{this.formatDate(this.props.date)}</h2>
-          {this.sunrise(this.props.data.sunrise)}
-          {this.lowTides(this.props.data.tides)}
+        <div className="card">
+          <header className="card-header">
+            <p className="card-header-title">
+              {this.sunrise(this.props.data.sunrise)}
+            </p>
+            <h1 className="card-header-title">
+              {this.formatDate(this.props.date)}
+            </h1>
+            <p className="card-header-title">
+              {this.getSunriseTide(
+                this.props.data.sunrise,
+                this.props.data.tides
+              )}
+            </p>
+          </header>
+          <div className="card-content">
+            <div className="content">
+              {this.lowTides(this.props.data.tides)}
+            </div>
+          </div>
         </div>
       );
     } else {
