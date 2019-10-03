@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { SunriseTides, HighLow } from "../ApiJson";
-import { TouchableHighlight } from "react-native";
 
 export default class ForecastCard extends Component<{
   date: string;
@@ -29,12 +28,13 @@ export default class ForecastCard extends Component<{
     return (
       <div>
         <i className="fa fa-sun-o" />
-        <span className="content">{sunrise}</span>
+        &nbsp;
+        <span className="content is-size-7">{sunrise}</span>
       </div>
     );
   };
 
-  lowTides = (tides?: HighLow) => {
+  allTides = (tides?: HighLow) => {
     let low = [];
     let high = [];
 
@@ -79,14 +79,16 @@ export default class ForecastCard extends Component<{
         return (
           <div>
             <i className="fa fa-arrow-up" />
-            <span className="content">{firstHighTide}</span>
+            &nbsp;
+            <span className="content is-size-7">{firstHighTide}</span>
           </div>
         );
       } else {
         return (
           <div>
             <i className="fa fa-arrow-down" />
-            <span className="content">{firstLowTide}</span>
+            &nbsp;
+            <span className="content is-size-7">{firstLowTide}</span>
           </div>
         );
       }
@@ -96,26 +98,24 @@ export default class ForecastCard extends Component<{
   render() {
     if (this.props.data) {
       return (
-        <div className="card">
-          <header className="card-header">
-            <p className="card-header-title">
+        <div className="box">
+          <div className="columns is-mobile">
+            <div className="column is-one-fifths has-text-left">
               {this.sunrise(this.props.data.sunrise)}
-            </p>
-            <h1 className="card-header-title">
-              {this.formatDate(this.props.date)}
-            </h1>
-            <p className="card-header-title">
+            </div>
+            <div className="column is-three-fifths has-text-centered">
+              <h1 className="title is-size-5">
+                {this.formatDate(this.props.date)}
+              </h1>
+            </div>
+            <div className="column is-one-fifths has-text-right">
               {this.getSunriseTide(
                 this.props.data.sunrise,
                 this.props.data.tides
               )}
-            </p>
-          </header>
-          <div className="card-content">
-            <div className="content">
-              {this.lowTides(this.props.data.tides)}
             </div>
           </div>
+          <div>{this.allTides(this.props.data.tides)}</div>
         </div>
       );
     } else {

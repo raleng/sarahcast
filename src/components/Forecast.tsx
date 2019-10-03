@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import ApiJson, { HighLow, SunriseTides } from "../ApiJson";
+import ApiJson from "../ApiJson";
 import ForecastCard from "./ForecastCard";
 
 export default class Forecast extends Component<{ data: ApiJson }> {
