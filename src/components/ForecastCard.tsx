@@ -13,13 +13,13 @@ export default class ForecastCard extends Component<{
     let day = date.getDay();
 
     let dayMap = new Map<number, string>();
-    dayMap.set(1, "Mon");
-    dayMap.set(2, "Tue");
-    dayMap.set(3, "Wed");
-    dayMap.set(4, "Thu");
-    dayMap.set(5, "Fri");
-    dayMap.set(6, "Sat");
-    dayMap.set(0, "Sun");
+    dayMap.set(1, "Monday");
+    dayMap.set(2, "Tuesday");
+    dayMap.set(3, "Wednesday");
+    dayMap.set(4, "Thursday");
+    dayMap.set(5, "Friday");
+    dayMap.set(6, "Saturday");
+    dayMap.set(0, "Sunday");
 
     return (
       <div>
@@ -68,7 +68,7 @@ export default class ForecastCard extends Component<{
               <p className="has-text-centered">{tides.low[i]}</p>
             </td>
           );
-        } else {
+        } else if (tides.high[i] && tides.low[i]) {
           let firstLowHour = tides.low[i].split(":");
           let firstHighHour = tides.high[i].split(":");
           if (firstLowHour < firstHighHour) {
@@ -165,13 +165,13 @@ export default class ForecastCard extends Component<{
           <div className="card">
             <div className="card-content">
               <div className="columns is-mobile is-vcentered">
-                <div className="column has-text-left">
+                <div className="column has-text-left is-narrow">
                   {this.sunrise(this.props.data.sunrise)}
                 </div>
                 <div className="column has-text-centered">
                   {this.formatDate(this.props.date)}
                 </div>
-                <div className="column has-text-right">
+                <div className="column has-text-right is-narrow">
                   {this.getSunriseTide(
                     this.props.data.sunrise,
                     this.props.data.tides
