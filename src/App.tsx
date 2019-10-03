@@ -32,6 +32,7 @@ class App extends Component {
       .then(data => {
         this.setState({ data: data });
       });
+    console.log("Forecast fetched.");
   };
 
   forecastCards() {
