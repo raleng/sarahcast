@@ -98,24 +98,28 @@ export default class ForecastCard extends Component<{
   render() {
     if (this.props.data) {
       return (
-        <div className="box">
-          <div className="columns is-mobile">
-            <div className="column is-one-fifths has-text-left">
-              {this.sunrise(this.props.data.sunrise)}
-            </div>
-            <div className="column is-three-fifths has-text-centered">
-              <h1 className="title is-size-5">
-                {this.formatDate(this.props.date)}
-              </h1>
-            </div>
-            <div className="column is-one-fifths has-text-right">
-              {this.getSunriseTide(
-                this.props.data.sunrise,
-                this.props.data.tides
-              )}
+        <div className="card">
+          <div className="card-content">
+            <div className="columns is-mobile">
+              <div className="column is-one-fifths has-text-left">
+                {this.sunrise(this.props.data.sunrise)}
+              </div>
+              <div className="column is-three-fifths has-text-centered">
+                <h1 className="title is-size-5">
+                  {this.formatDate(this.props.date)}
+                </h1>
+              </div>
+              <div className="column is-one-fifths has-text-right">
+                {this.getSunriseTide(
+                  this.props.data.sunrise,
+                  this.props.data.tides
+                )}
+              </div>
             </div>
           </div>
-          <div>{this.allTides(this.props.data.tides)}</div>
+          <div className="card-content">
+            <div>{this.allTides(this.props.data.tides)}</div>
+          </div>
         </div>
       );
     } else {
