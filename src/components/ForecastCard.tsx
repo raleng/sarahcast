@@ -48,70 +48,46 @@ export default class ForecastCard extends Component<{
       for (let i = 0; i < 2; i++) {
         if (!tides.low[i] && tides.high[i]) {
           orderedTidesTypes.push(
-            <th>
-              <p className="has-text-centered">high</p>
-            </th>
+            <th><p className="has-text-centered">high</p></th>
           );
           orderedTides.push(
-            <td>
-              <p className="has-text-centered">{tides.high[i]}</p>
-            </td>
+            <td><p className="has-text-centered">{tides.high[i]}</p></td>
           );
         } else if (!tides.high[i] && tides.high[i]) {
           orderedTidesTypes.push(
-            <th>
-              <p className="has-text-centered">low</p>
-            </th>
+            <th><p className="has-text-centered">low</p></th>
           );
           orderedTides.push(
-            <td>
-              <p className="has-text-centered">{tides.low[i]}</p>
-            </td>
+            <td><p className="has-text-centered">{tides.low[i]}</p></td>
           );
         } else if (tides.high[i] && tides.low[i]) {
           let firstLowHour = tides.low[i].split(":");
           let firstHighHour = tides.high[i].split(":");
           if (firstLowHour < firstHighHour) {
             orderedTidesTypes.push(
-              <th>
-                <p className="has-text-centered">low</p>
-              </th>
+              <th><p className="has-text-centered">low</p></th>
             );
             orderedTides.push(
-              <td>
-                <p className="has-text-centered">{tides.low[i]}</p>
-              </td>
+              <td><p className="has-text-centered">{tides.low[i]}</p></td>
             );
             orderedTidesTypes.push(
-              <th>
-                <p className="has-text-centered">high</p>
-              </th>
+              <th><p className="has-text-centered">high</p></th>
             );
             orderedTides.push(
-              <td>
-                <p className="has-text-centered">{tides.high[i]}</p>
-              </td>
+              <td><p className="has-text-centered">{tides.high[i]}</p></td>
             );
           } else {
             orderedTidesTypes.push(
-              <th>
-                <p className="has-text-centered">high</p>
-              </th>
+              <th><p className="has-text-centered">high</p></th>
             );
             orderedTides.push(
-              <td>
-                <p className="has-text-centered">{tides.high[i]}</p>
-              </td>
+              <td><p className="has-text-centered">{tides.high[i]}</p></td>
             );
             orderedTidesTypes.push(
-              <th>
-                <p className="has-text-centered">low</p>
-              </th>
+              <th><p className="has-text-centered">low</p></th>
             );
             orderedTides.push(
-              <td>
-                <p className="has-text-centered">{tides.low[i]}</p>
-              </td>
+              <td><p className="has-text-centered">{tides.low[i]}</p></td>
             );
           }
         }

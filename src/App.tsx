@@ -57,9 +57,6 @@ class App extends Component {
               <div className="columns is-mobile">
                 <div className="column is-four-fifths has-text-left">
                   <h1 className="title">Sarahcast</h1>
-                  <h6 className="subtitle is-size-7">
-                    Only {this.daysToGo()} days to go!
-                  </h6>
                 </div>
                 <div className="column has-text-right">
                   <a className="button is-primary" onClick={this.getForecast}>
