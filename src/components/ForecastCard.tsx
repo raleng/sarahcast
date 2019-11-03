@@ -6,8 +6,10 @@ export default class ForecastCard extends Component<{
   data: SunriseTides;
 }> {
   formatDate = (dateString: string) => {
-    let date = new Date(dateString);
-    let utc = date.getUTCDate();
+    let forecastDate = new Date(dateString);
+    //let utc = date.getUTCDate();
+    let date_string = forecastDate.toLocaleString("en-US", { timeZone: "America/El_Salvador" });
+    let date = new Date(date_string);
 
     let month = date.getMonth();
     let day = date.getDay();
@@ -24,7 +26,7 @@ export default class ForecastCard extends Component<{
     return (
       <div>
         <h1 className="title is-size-6">{dayMap.get(day)}</h1>
-        <h2 className="subtitle is-size-7">{`${utc}.${month + 1}.`}</h2>
+        <h2 className="subtitle is-size-7">{`${date}.${month + 1}.`}</h2>
       </div>
     );
   };
