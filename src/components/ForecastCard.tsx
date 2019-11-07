@@ -1,10 +1,15 @@
 import React, { Component } from "react";
 import { SunriseTides, HighLow } from "../ApiJson";
+import ForecastModal from "./ForecastModal";
 
 export default class ForecastCard extends Component<{
   date: string;
   data: SunriseTides;
 }> {
+  state = {
+    modalState: false
+  };
+
   formatDate = (dateString: string) => {
     let forecastDate = new Date(dateString);
     //let utc = date.getUTCDate();
@@ -109,7 +114,7 @@ export default class ForecastCard extends Component<{
     }
   };
 
-  getSunriseTide = (sunrise: string, tides?: HighLow) => {
+  getSunriseTide = (tides?: HighLow) => {
     if (tides) {
       let firstLowTide = tides.low[0];
       let firstHighTide = tides.high[0];
@@ -136,11 +141,19 @@ export default class ForecastCard extends Component<{
     }
   };
 
+  showModal = () => {
+    this.setState({
+      modalState: !this.state.modalState
+    });
+  };
+
   render() {
     if (this.props.data) {
       return (
         <div className="container">
-          <div className="card">
+          <div className="card" onClick={() => {
+            this.showModal();
+          }}>
             <div className="card-content">
               <div className="columns is-mobile is-vcentered">
                 <div className="column has-text-left is-narrow">
@@ -151,14 +164,16 @@ export default class ForecastCard extends Component<{
                 </div>
                 <div className="column has-text-right is-narrow">
                   {this.getSunriseTide(
-                    this.props.data.sunrise,
                     this.props.data.tides
                   )}
                 </div>
               </div>
             </div>
-            <div className="card-content">
+            <ForecastModal show={this.state.modalState}>
               <div>{this.allTides(this.props.data.tides)}</div>
+            </ForecastModal>
+            <div className="card-content">
+
             </div>
           </div>
         </div>

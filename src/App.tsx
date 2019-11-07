@@ -2,7 +2,7 @@ import React, { Component } from "react";
 //import logo from "./logo.svg";
 import "./App.css";
 import Forecast from "./components/Forecast";
-import ForecastModal from "./components/ForecastModal";
+
 import ApiJson from "./ApiJson";
 
 const API_KEY = process.env.REACT_APP_TIDE_SUNRISE_API_KEY;
@@ -46,11 +46,6 @@ class App extends Component {
     }
   }
 
-  showModal = () => {
-    this.setState({
-      modalState: !this.state.modalState
-    });
-  }
 
   componentDidMount() {
     this.getForecast();
@@ -75,12 +70,6 @@ class App extends Component {
             </div>
           </div>
         </section>
-        <button onClick={e => {
-          this.showModal();
-        }}>Show Modal</button>
-        <ForecastModal show={this.state.modalState} onClose={this.showModal}>
-          FOobar
-          </ForecastModal>
         <div className="container">{this.forecastCards()}</div>
       </div>
     );

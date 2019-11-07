@@ -1,11 +1,6 @@
 import React, { Component } from "react";
 
-export default class Modal extends Component<{ show: boolean, onClose: () => void }> {
-
-    onClose = () => {
-        this.props.onClose && this.props.onClose();
-    };
-
+export default class ForecastModal extends Component<{ show: boolean }> {
     render() {
         if (!this.props.show) {
             return null;
@@ -13,16 +8,8 @@ export default class Modal extends Component<{ show: boolean, onClose: () => voi
         return (
             <div>
                 <div>{this.props.children}</div>
-                <div>
-                    <button
-                        onClick={e => {
-                            this.onClose();
-                        }}
-                    >Close</button>
-
-                </div>
+                <div>Foobar</div>
             </div>
         );
     }
 }
-
