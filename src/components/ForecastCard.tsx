@@ -169,6 +169,11 @@ export default class ForecastCard extends Component<{
                 </div>
               </div>
             </div>
+            <div className="modal" is-active={this.state.modalState}>
+              <div className="modal-content">
+                {this.allTides(this.props.data.tides)}
+              </div>
+            </div>
             <ForecastModal show={this.state.modalState}>
               <div>{this.allTides(this.props.data.tides)}</div>
             </ForecastModal>

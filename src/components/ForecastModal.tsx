@@ -6,9 +6,14 @@ export default class ForecastModal extends Component<{ show: boolean }> {
             return null;
         }
         return (
-            <div>
-                <div>{this.props.children}</div>
-                <div>Foobar</div>
+            <div className="modal is-active">
+                <div className="modal-background"></div>
+                <div className="modal-card">
+                    <section className="modal-card-body">
+                        {this.props.children}
+                        Foobar
+                    </section>
+                </div>
             </div>
         );
     }
